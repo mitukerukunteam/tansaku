@@ -89,18 +89,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onMapLongClick(LatLng longpushLocation) {
                 LatLng newlocation = new LatLng(longpushLocation.latitude, longpushLocation.longitude);
                 mMap.addMarker(new MarkerOptions().position(newlocation).title(":" + longpushLocation.latitude + " :" + longpushLocation.longitude));
+
+
             }
         });
 
-        //マーカーの削除
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-
-                marker.remove();
-                return true;
-            }
-        });
 
         //マーカーをセットできるよ
         final LatLng MELBOURNE = new LatLng(35.68, 139.76);
