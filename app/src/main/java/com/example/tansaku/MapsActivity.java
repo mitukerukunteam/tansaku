@@ -2,8 +2,7 @@ package com.example.tansaku;
 
 import androidx.fragment.app.FragmentActivity;
 
-import android.location.Criteria;
-import android.location.LocationManager;
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,10 +14,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Locale;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-
+import android.widget.Toast;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -35,6 +31,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
     }
 
 
@@ -77,11 +75,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onMapClick(LatLng tapLocation) {
                 // tapされた位置の緯度経度
                 location = new LatLng(tapLocation.latitude, tapLocation.longitude);
+                double a = tapLocation.latitude;
+                double b = tapLocation.longitude;
                 String str = String.format(Locale.US, "%f, %f", tapLocation.latitude, tapLocation.longitude);
                 mMap.addMarker(new MarkerOptions().position(location).title(str));
 
+                double text = a;
+                double text2 = b;
+
+                Toast toast = Toast.makeText(MapsActivity.this, String.format("double：%f", text)+String.format("double：%f", text2), Toast.LENGTH_LONG);
+                toast.show();
+                
+
             }
         });
+
+
 
         // 長押しのリスナーをセット
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
