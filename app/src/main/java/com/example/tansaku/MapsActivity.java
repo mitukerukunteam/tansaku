@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Locale;
 
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -31,6 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        setActionBar((Toolbar) findViewById(R.id.toolbar));
 
 
     }
